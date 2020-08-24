@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 const acorn = require('acorn')
 
 const isObject = u => typeof u === 'object' && u !== null
