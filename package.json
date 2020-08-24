@@ -2,7 +2,7 @@
   "name": "@tetsuo/design-functions",
   "version": "0.1.0",
   "bin": {
-    "design-functions": "index.js"
+    "design-functions": "bin.js"
   },
   "description": "",
   "main": "bin.js",
