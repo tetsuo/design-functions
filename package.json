@@ -1,11 +1,11 @@
 {
-  "name": "@tetsuo/designdoc",
-  "version": "1.1.0",
+  "name": "@tetsuo/design-functions",
+  "version": "0.1.0",
   "bin": {
-    "designdoc": "bin.js"
+    "design-functions": "index.js"
   },
   "description": "",
-  "main": "index.js",
+  "main": "bin.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
