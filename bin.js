@@ -3,9 +3,10 @@
 const path = require('path')
 const resolve = require('./resolve')
 const createEntry = require('./entry')
+const presetEnv = require('@babel/preset-env')
 
 const main = cb => {
-  const { entries, babelify } = process.argv
+  const argv = process.argv
     .slice(2)
     .reduce(
       (acc, x) =>
@@ -16,6 +17,19 @@ const main = cb => {
           : { entries: acc.entries.concat(path.resolve(x)) },
       { entries: [], babelify: {} }
     )
+
+  const entries = argv.entries
+
+  const babelify = argv.babelify
+
+  let ix = -1
+
+  if (
+    Array.isArray(babelify.presets) &&
+    (ix = babelify.presets.findIndex(d => Array.isArray(d) && d[0] === '@babel/preset-env')) >= 0
+  ) {
+    babelify.presets[ix][0] = presetEnv
+  }
 
   resolve(entries, babelify, (er, res) =>
     cb(
