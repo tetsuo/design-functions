@@ -183,17 +183,16 @@ const parseCouchModule = (m: CouchModule) =>
             A.reduce('', (acc, node) => {
               if (m.type === 'Map' && DefaultFunctionExpression.is(node)) {
                 return (
-                  'function(doc) {\n\n' +
+                  'function(doc) { ' +
                   acc +
-                  '\n\n' +
                   'var default = ' +
                   m.source.slice(node.expression.right.start, node.expression.right.end) +
-                  ';\n\n'
+                  ';'
                 )
               }
               return acc + m.source.slice(node.start, node.end)
             }),
-            s => (m.type === 'Map' ? s + 'default(doc)(log)\n\n}' : s)
+            s => (m.type === 'Map' ? s + 'default(doc)(log);}' : s)
           )
         )
       )
