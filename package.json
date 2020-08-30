@@ -1,12 +1,15 @@
 {
   "name": "@tetsuo/design-functions",
-  "version": "0.1.3",
-  "bin": {
-    "design-functions": "bin.js"
-  },
+  "version": "0.2.0",
   "description": "",
-  "main": "bin.js",
+  "main": "lib/index.js",
+  "bin": {
+    "designfun": "bin.js"
+  },
   "scripts": {
+    "build": "tsc",
+    "watch": "rm -fr lib && tsc --watch --sourceMap",
+    "lint": "eslint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -18,10 +21,23 @@
     "acorn": "^8.0.1",
     "babelify": "^10.0.0",
     "deps-sort": "^2.0.1",
+    "fluture": "^13.0.1",
+    "fp-ts": "^2.8.2",
+    "fp-ts-fluture": "^0.6.5",
+    "glob": "^7.1.6",
+    "io-ts": "^2.2.10",
     "module-deps": "^6.2.3",
     "stream-collector": "^1.0.1",
-    "terser": "^5.2.1",
     "toposort": "^2.0.2",
     "transform-deps": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@typescript-eslint/eslint-plugin": "^3.10.1",
+    "@typescript-eslint/parser": "^3.10.1",
+    "eslint": "^7.7.0",
+    "eslint-config-prettier": "^6.11.0",
+    "prettier": "^2.1.1",
+    "typescript": "^4.0.2"
   }
 }
