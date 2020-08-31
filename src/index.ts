@@ -185,14 +185,24 @@ const parseCouchModule = (m: CouchModule) =>
                 return (
                   'function(doc) { ' +
                   acc +
-                  'var default = ' +
+                  'var __' +
+                  m.name +
+                  ' = ' +
                   m.source.slice(node.expression.right.start, node.expression.right.end) +
                   ';'
                 )
               }
               return acc + m.source.slice(node.start, node.end)
             }),
-            s => (m.type === 'Map' ? s + 'default(doc)(log);}' : s)
+            s =>
+              m.type === 'Map'
+                ? s +
+                  '__' +
+                  m.name +
+                  '(function(sub) { sub(doc); })(' +
+                  'function(d) { Object.prototype.toString.call(d) === "[object Array]" ? emit.apply(null, d) : emit(d); });' +
+                  '}'
+                : s
           )
         )
       )
