@@ -93,7 +93,7 @@ const DefaultFunctionExpression = type({
     right: t.intersection([
       Node,
       type({
-        type: lit('CallExpression')
+        type: t.union([lit('CallExpression'), lit('FunctionExpression')])
       })
     ])
   })
